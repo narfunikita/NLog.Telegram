@@ -1,0 +1,33 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2013
+VisualStudioVersion = 12.0.30723.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NLog.Telegram", "NLog.Telegram\NLog.Telegram.csproj", "{7B087778-7453-4CAC-945E-7A3F2F307E9B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NLog.Telegram.Demo", "NLog.Telegram.Demo\NLog.Telegram.Demo.csproj", "{AC02ADF8-380E-4CED-8D65-1C966CB92F12}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{4536B955-F422-4634-82CE-42DC65E4B656}"
+	ProjectSection(SolutionItems) = preProject
+		README.md = README.md
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{7B087778-7453-4CAC-945E-7A3F2F307E9B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7B087778-7453-4CAC-945E-7A3F2F307E9B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7B087778-7453-4CAC-945E-7A3F2F307E9B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7B087778-7453-4CAC-945E-7A3F2F307E9B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AC02ADF8-380E-4CED-8D65-1C966CB92F12}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AC02ADF8-380E-4CED-8D65-1C966CB92F12}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AC02ADF8-380E-4CED-8D65-1C966CB92F12}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AC02ADF8-380E-4CED-8D65-1C966CB92F12}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
