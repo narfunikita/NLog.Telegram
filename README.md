@@ -22,8 +22,8 @@ Usage
     <target xsi:type="Telegram"
             name ="telegramTarget"
 			layout="${message}"
-            BotToken ="xxx"
-            ChatId="xxx" />
+            botToken ="xxx"
+            chatId="xxx" />
   </targets>
 
   <rules>
