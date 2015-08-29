@@ -15,6 +15,11 @@ namespace NLog.Telegram
 
         private readonly MessageRequest _request;
 
+        /// <summary>
+        /// telegram text restriction
+        /// </summary>
+        private readonly static int MaxTextLength = 4096;
+
         public TelegramMessageBuilder(string baseUrl, string text)
         {
             this._baseUrl = baseUrl;
@@ -44,7 +49,7 @@ namespace NLog.Telegram
         {
             Dictionary<string, string> dic = new Dictionary<string, string>();
             dic.Add("chat_id", _request.ChatId);
-            dic.Add("text", _request.Text);
+            dic.Add("text", _request.Text == null ? null : _request.Text.Substring(0, MaxTextLength));
             var array = dic
                 .Select(x => string.Format("{0}={1}", HttpUtility.UrlEncode(x.Key), HttpUtility.UrlEncode(x.Value)))
                 .ToArray();
