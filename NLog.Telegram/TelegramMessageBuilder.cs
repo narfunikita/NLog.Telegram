@@ -49,7 +49,9 @@ namespace NLog.Telegram
         {
             Dictionary<string, string> dic = new Dictionary<string, string>();
             dic.Add("chat_id", _request.ChatId);
-            dic.Add("text", _request.Text == null ? null : _request.Text.Substring(0, MaxTextLength));
+            dic.Add("text", _request.Text == null ?
+                null :
+                _request.Text.Substring(0, Math.Min(MaxTextLength, _request.Text.Length)));
             var array = dic
                 .Select(x => string.Format("{0}={1}", HttpUtility.UrlEncode(x.Key), HttpUtility.UrlEncode(x.Value)))
                 .ToArray();
