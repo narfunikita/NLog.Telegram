@@ -1,9 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+using System.IO;
 using System.Net;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace NLog.Telegram
 {
@@ -13,23 +10,29 @@ namespace NLog.Telegram
 
         public void Send(string url)
         {
+            var str = string.Empty;
+
             try
             {
-                using (var client = new WebClient())
+                var request = (HttpWebRequest)WebRequest.Create(url);
+
+                using (var response = (HttpWebResponse)request.GetResponse())
+                using (var stream = response.GetResponseStream())
+                using (var reader = new StreamReader(stream))
                 {
-                    client.UploadStringAsync(new Uri(url), "GET");
+                    str = reader.ReadToEnd();
                 }
             }
             catch (Exception e)
             {
-                this.OnError(e);
+                OnError(e);
             }
         }
 
         private void OnError(Exception obj)
         {
-            if (this.Error != null)
-                this.Error(obj);
+            if (Error != null)
+                Error(obj);
         }
     }
 }

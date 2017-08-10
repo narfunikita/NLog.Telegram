@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Runtime.Serialization;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Runtime.Serialization;
 
 namespace NLog.Telegram
 {
@@ -21,9 +16,5 @@ namespace NLog.Telegram
 
         [DataMember(Name = "reply_to_message_id")]
         public int? ReplyToMessageId { get; set; }
-
-        public MessageRequest()
-        {
-        }
     }
 }
