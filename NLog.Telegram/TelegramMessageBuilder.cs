@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Web;
 
 namespace NLog.Telegram
@@ -12,7 +10,6 @@ namespace NLog.Telegram
         private readonly string _baseUrl;
 
         private readonly TelegramClient _client;
-
         private readonly MessageRequest _request;
 
         /// <summary>
@@ -22,9 +19,9 @@ namespace NLog.Telegram
 
         public TelegramMessageBuilder(string baseUrl, string text)
         {
-            this._baseUrl = baseUrl;
-            this._client = new TelegramClient();
-            this._request = new MessageRequest() { Text = text };
+            _baseUrl = baseUrl;
+            _client = new TelegramClient();
+            _request = new MessageRequest() { Text = text };
         }
 
         public static TelegramMessageBuilder Build(string baseUrl, string text)
@@ -34,8 +31,7 @@ namespace NLog.Telegram
 
         public TelegramMessageBuilder OnError(Action<Exception> error)
         {
-            this._client.Error += error;
-
+            _client.Error += error;
             return this;
         }
 
@@ -47,18 +43,20 @@ namespace NLog.Telegram
 
         public void Send()
         {
-            Dictionary<string, string> dic = new Dictionary<string, string>();
+            var dic = new Dictionary<string, string>();
+
             dic.Add("chat_id", _request.ChatId);
             dic.Add("text", _request.Text == null ?
                 null :
                 _request.Text.Substring(0, Math.Min(MaxTextLength, _request.Text.Length)));
+
             var array = dic
                 .Select(x => string.Format("{0}={1}", HttpUtility.UrlEncode(x.Key), HttpUtility.UrlEncode(x.Value)))
                 .ToArray();
 
-            var url = this._baseUrl + "?" + string.Join("&", array);
+            var url = _baseUrl + "?" + string.Join("&", array);
 
-            this._client.Send(url);
+            _client.Send(url);
         }
     }
 }
